@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/09 19:54:44 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/10 10:45:45 by gdannay          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 
 char	*ft_strstr(const char *str, const char *need)
@@ -15,12 +27,14 @@ char	*ft_strstr(const char *str, const char *need)
 		{	
 			k++;
 			j++;
+			if (need[j] == '\0')
+				return ((char *)(str + i));
 		}
-		if (need[j] == '\0')
-			return (str + i);
 		k = 0;
 		j = 0;
 		i++;
 	}
+	if (need[j] == '\0')
+		return ((char *)(str));
 	return (NULL);
 }

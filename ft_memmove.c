@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 18:50:51 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/09 20:29:07 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/08 11:58:53 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/08 14:57:13 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	unsigned char	*new;	
-	unsigned char	d;
+	size_t			i;
+	int				j;
+	unsigned char	*destb;
+	unsigned char	*srcb;
 
-	i = 0;
-	d = (unsigned char)c;
-	new = (unsigned char *)s;
-	while (i < n)
+	i = -1;
+	j = n;
+	destb = (unsigned char*)dest;
+	srcb = (unsigned char*)src;
+	if (dest - src <= 0)
 	{
-		if (new[i] == d)
-			return (new + i);
-		i++;
+		while (++i < n)
+			destb[i] = srcb[i];
 	}
-	return (NULL);
+	else
+	{
+		while (--j >= 0)
+			destb[j] = srcb[j];
+	}
+	return (dest);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/09 19:45:50 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/09 22:13:24 by gdannay          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 
 char	*ft_strncpy(char *dest, const char *src, size_t n)
@@ -10,7 +22,7 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 		dest[i] = src[i];
 		i++;
 	}
-	if (i < n)
+	while (i < n)
 	{
 		dest[i] = 0;
 		i++;

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 18:50:51 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/09 20:29:07 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/10 13:01:11 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/10 13:09:47 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	size_t		i;
-	unsigned char	*new;	
-	unsigned char	d;
+	size_t	i;
+	size_t	size;
+	char	*new;
 
 	i = 0;
-	d = (unsigned char)c;
-	new = (unsigned char *)s;
-	while (i < n)
+	size = ft_strlen(s);
+	if ((new = (char *)malloc(sizeof(char) * (size + 1))) == NULL)
+		return (NULL);
+	while (i < size)
 	{
-		if (new[i] == d)
-			return (new + i);
+		new[i] = (*f)(s[i]);
 		i++;
 	}
-	return (NULL);
+	new[i] = '\0';
+	return (new);
 }

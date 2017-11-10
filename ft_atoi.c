@@ -1,3 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/09 18:47:44 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/10 12:12:33 by gdannay          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <stdlib.h>
+
 int	ft_atoi(const char *nbr)
 {
 	int	i;
@@ -7,19 +22,18 @@ int	ft_atoi(const char *nbr)
 	i = 0;
 	neg = 0;
 	n = 0;
-	while ((nbr[i] => 9 && nbr[i] <= 13) || nbr[i] == 32)
+	while ((nbr[i] >= 8 && nbr[i] <= 13) || nbr[i] == ' ')
 		i++;
-	if (str[i] == '-')
+	if (nbr[i] == '-')
 		neg = 1;
-	if (str[i] == '-' || str[i] == '+')
+	if (nbr[i] == '-' || nbr[i] == '+')
 		i++;
-	while (str[i] >= 0 && str[i] <= '9')
+	while (nbr[i] != '\0' && nbr[i] >= '0' && nbr[i] <= '9')
 	{
-		n = n * 10 - (str[i] - '0');
+		n = n * 10 - (nbr[i] - '0');
 		i++;	
 	}
 	if (neg == 1)
 		return (n);
-	return (-n);
-	
+	return (-n);	
 }

@@ -1,11 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/10 12:14:16 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/10 12:24:03 by gdannay          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <string.h>
+#include "libft.h"
 
 void	*ft_memalloc(size_t size)
 {
 	void	*new;
+	size_t	i;
 
+	i = 0;
 	if ((new = (void *)malloc(sizeof(new) * size)) == NULL)
 		return (NULL);
+	ft_bzero(new, size);
 	return (new);	
 }

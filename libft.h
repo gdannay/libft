@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 18:50:51 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/09 20:29:07 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/08 10:08:24 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/10 12:52:01 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	*ft_memchr(const void *s, int c, size_t n)
-{
-	size_t		i;
-	unsigned char	*new;	
-	unsigned char	d;
+# include <string.h>
 
-	i = 0;
-	d = (unsigned char)c;
-	new = (unsigned char *)s;
-	while (i < n)
-	{
-		if (new[i] == d)
-			return (new + i);
-		i++;
-	}
-	return (NULL);
-}
+void	*ft_memset(void *s, int c, size_t n);
+void	*ft_bzero(void *s, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
+
+size_t	ft_strlen(const char *s);
+
+#endif

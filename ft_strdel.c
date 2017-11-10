@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 18:50:51 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/09 20:29:07 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/10 12:38:50 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/10 12:40:47 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <string.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_strdel(char **as)
 {
-	size_t		i;
-	unsigned char	*new;	
-	unsigned char	d;
-
-	i = 0;
-	d = (unsigned char)c;
-	new = (unsigned char *)s;
-	while (i < n)
-	{
-		if (new[i] == d)
-			return (new + i);
-		i++;
-	}
-	return (NULL);
+	free(*as);
+	*as = NULL;
 }

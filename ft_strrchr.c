@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/09 19:54:19 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/09 22:38:35 by gdannay          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 
 char	*ft_strrchr(const char *s, int c)
@@ -7,6 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 	unsigned char	b;
 
 	i = 0;
+	j = -1;
 	b = (unsigned char)c;
 	while (s[i] != '\0')
 	{
@@ -14,7 +27,9 @@ char	*ft_strrchr(const char *s, int c)
 			j = i;
 		i++;
 	}
-	if (j == 0)
+	if (j == -1 && b != '\0')
 		return (NULL);
-	return (s + j);
+	if (b == '\0')
+		return ((char *)(s + i));
+	return ((char *)(s + j));
 }
