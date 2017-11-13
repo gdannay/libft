@@ -1,6 +1,9 @@
 char	*fill(long nb, char *new, int taille)
 {
-	
+	if (nb > 10)
+		return (fill(nb % 10, new, taille--);
+	if (nb > 0)
+		return 
 }
 
 char	*ft_itoa(int n)
