@@ -6,7 +6,7 @@
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:41:34 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/10 12:47:15 by gdannay          ###   ########.fr       */
+/*   Updated: 2017/11/14 16:56:31 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	ft_strclr(char *s)
 	size_t	i;
 
 	i = 0;
-	size = ft_strlen(s);
-	while (i < size)
+	if (s != NULL)
 	{
-		s[i] = '\0';
-		i++;
+		size = ft_strlen(s);
+		while (i < size)
+		{
+			s[i] = '\0';
+			i++;
+		}
 	}
 }

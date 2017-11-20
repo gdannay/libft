@@ -6,7 +6,7 @@
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:14:16 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/10 12:24:03 by gdannay          ###   ########.fr       */
+/*   Updated: 2017/11/13 14:12:20 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	*ft_memalloc(size_t size)
 	if ((new = (void *)malloc(sizeof(new) * size)) == NULL)
 		return (NULL);
 	ft_bzero(new, size);
-	return (new);	
+	return (new);
 }

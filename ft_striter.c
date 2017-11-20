@@ -6,7 +6,7 @@
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:48:16 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/10 12:55:55 by gdannay          ###   ########.fr       */
+/*   Updated: 2017/11/14 17:07:47 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	ft_striter(char *s, void (*f)(char *))
 	size_t	size;
 
 	i = 0;
-	size = ft_strlen(s);
-	while (i < size)
+	if (s != NULL && f != NULL)
 	{
-		(*f)(&s[i]);
-		i++;
+		size = ft_strlen(s);
+		while (i < size)
+		{
+			(*f)(&s[i]);
+			i++;
+		}
 	}
 }

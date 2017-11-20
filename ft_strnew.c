@@ -6,7 +6,7 @@
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:30:46 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/10 12:35:05 by gdannay          ###   ########.fr       */
+/*   Updated: 2017/11/13 14:18:19 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnew(size_t size)
 {
 	size_t	i;
 	char	*new;
-	
+
 	i = 0;
 	if ((new = (char *)malloc(sizeof(char) * (size + 1))) == NULL)
 		return (NULL);

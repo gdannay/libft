@@ -6,7 +6,7 @@
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 18:56:06 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/09 22:19:00 by gdannay          ###   ########.fr       */
+/*   Updated: 2017/11/13 14:13:59 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int		i;
+	int				i;
 	unsigned char	b;
 
 	i = 0;

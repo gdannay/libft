@@ -6,7 +6,7 @@
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 19:43:57 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/10 11:33:36 by gdannay          ###   ########.fr       */
+/*   Updated: 2017/11/13 14:14:15 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
-	unsigned char *c1;
-	unsigned char *c2;
+	size_t			i;
+	unsigned char	*c1;
+	unsigned char	*c2;
 
 	i = 0;
 	c1 = (unsigned char *)s1;

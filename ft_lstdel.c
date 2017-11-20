@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 13:34:44 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/14 17:11:13 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/14 12:11:51 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/14 16:30:23 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	size_t	i;
-	size_t	size;
-	char	*new;
+	t_list	*list;
 
-	i = 0;
-	if (s == NULL || f == NULL)
-		return (NULL);
-	size = ft_strlen(s);
-	if ((new = (char *)malloc(sizeof(char) * (size + 1))) == NULL)
-		return (NULL);
-	while (i < size)
+	list = *alst;
+	while (list)
 	{
-		new[i] = (*f)((unsigned int)i, s[i]);
-		i++;
+		(*del)(list->content, list->content_size);
+		free(list);
+		list = list->next;
 	}
-	new[i] = '\0';
-	return (new);
+	*alst = NULL;
 }

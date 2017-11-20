@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 13:34:44 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/14 17:11:13 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/14 10:59:54 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/14 16:30:40 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	size_t	i;
-	size_t	size;
-	char	*new;
+	t_list	*new;
 
-	i = 0;
-	if (s == NULL || f == NULL)
+	if ((new = (t_list *)malloc(sizeof(t_list))) == NULL)
 		return (NULL);
-	size = ft_strlen(s);
-	if ((new = (char *)malloc(sizeof(char) * (size + 1))) == NULL)
-		return (NULL);
-	while (i < size)
+	if (content == NULL)
 	{
-		new[i] = (*f)((unsigned int)i, s[i]);
-		i++;
+		new->content = NULL;
+		new->content_size = 0;
+		new->next = NULL;
+		return (new);
 	}
-	new[i] = '\0';
-	return (new);
+	else
+	{
+		new->content = (void *)ft_strdup(content);
+		new->content_size = content_size;
+		new->next = NULL;
+		return (new);
+	}
 }

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 13:34:44 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/14 17:11:13 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/13 11:07:02 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/14 17:11:33 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
-#include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	size_t	size;
 	char	*new;
 
 	i = 0;
-	if (s == NULL || f == NULL)
+	if (s == NULL)
 		return (NULL);
-	size = ft_strlen(s);
-	if ((new = (char *)malloc(sizeof(char) * (size + 1))) == NULL)
+	if ((new = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
 		return (NULL);
-	while (i < size)
+	while (i < len)
 	{
-		new[i] = (*f)((unsigned int)i, s[i]);
+		new[i] = s[start + i];
 		i++;
 	}
 	new[i] = '\0';

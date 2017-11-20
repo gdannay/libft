@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 13:34:44 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/14 17:11:13 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/13 11:38:48 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/13 14:13:16 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putnbr(int n)
 {
-	size_t	i;
-	size_t	size;
-	char	*new;
+	long	nb;
 
-	i = 0;
-	if (s == NULL || f == NULL)
-		return (NULL);
-	size = ft_strlen(s);
-	if ((new = (char *)malloc(sizeof(char) * (size + 1))) == NULL)
-		return (NULL);
-	while (i < size)
+	nb = n;
+	if (nb < 0)
 	{
-		new[i] = (*f)((unsigned int)i, s[i]);
-		i++;
+		nb *= -1;
+		ft_putchar('-');
 	}
-	new[i] = '\0';
-	return (new);
+	if (nb >= 10)
+		ft_putnbr(nb / 10);
+	ft_putchar(nb % 10 + '0');
 }

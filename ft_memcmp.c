@@ -6,12 +6,11 @@
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 18:51:34 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/10 11:21:46 by gdannay          ###   ########.fr       */
+/*   Updated: 2017/11/14 19:12:40 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <stdio.h>
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

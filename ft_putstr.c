@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 13:37:16 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/10 13:39:29 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/13 11:33:45 by gdannay           #+#    #+#             */
+/*   Updated: 2017/11/13 11:35:16 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <unistd.h>
+#include "libft.h"
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+void	ft_putstr(char const *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i] && i < n)
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
 		i++;
-	if (s1[i] == '\0' && s2 == '\0')
-		return (1);
-	return (0);
+	}
 }
