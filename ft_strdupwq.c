@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 10:22:51 by gdannay           #+#    #+#             */
-/*   Updated: 2017/12/02 11:46:17 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/09 21:40:08 by gdannay           #+#    #+#             */
+/*   Updated: 2018/01/11 16:46:57 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strdupwq(char *s, char quote)
 {
-	size_t	size1;
-	size_t	size2;
+	int		i;
+	int		j;
 	char	*new;
-	size_t	i;
-	size_t	j;
 
 	i = 0;
-	j = 0;
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	if ((new = (char *)malloc(sizeof(char) * (size1 + size2 + 1))) == NULL)
-		return (0);
-	while (s1 && s1[i] != '\0')
+	j = -1;
+	if (s == NULL)
+		return (NULL);
+	if (quote < 0)
+		quote *= -1;
+	i = ft_strlenwq(s, quote);
+	if ((new = (char *)malloc(sizeof(char) * (i + 1))) == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
 	{
-		new[i] = s1[i];
+		if (s[i] != quote && (s[i] != '\\' || (s[i + 1] && s[i + 1] == '\\')))
+			new[++j] = s[i];
 		i++;
 	}
-	while (s2 && s2[j] != '\0')
-		new[i++] = s2[j++];
-	new[i] = '\0';
+	new[j + 1] = '\0';
 	return (new);
 }

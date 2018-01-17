@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_dtabdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 11:07:02 by gdannay           #+#    #+#             */
-/*   Updated: 2017/12/15 16:00:08 by gdannay          ###   ########.fr       */
+/*   Created: 2018/01/07 11:59:17 by gdannay           #+#    #+#             */
+/*   Updated: 2018/01/17 10:43:20 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	**ft_tabdup(char **tab)
 {
-	size_t	i;
-	char	*new;
+	int		i;
+	char	**cpy;
 
 	i = 0;
-	if (s == NULL)
-		return (NULL);
-	if ((new = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		new[i] = s[start + i];
+	cpy = NULL;
+	while (tab && tab[i])
 		i++;
-	}
-	new[i] = '\0';
-	return (new);
+	if ((cpy = (char **)malloc(sizeof(char *) * (i + 1))) == NULL)
+		return (NULL);
+	cpy[i] = 0;
+	i = -1;
+	while (tab && tab[++i])
+		cpy[i] = ft_strdup(tab[i]);
+	return (cpy);
 }

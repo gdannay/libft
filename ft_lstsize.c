@@ -6,7 +6,7 @@
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 16:49:53 by gdannay           #+#    #+#             */
-/*   Updated: 2017/11/14 17:56:04 by gdannay          ###   ########.fr       */
+/*   Updated: 2017/12/15 18:28:14 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_lstsize(t_list *begin_list)
 
 	i = 0;
 	temp = begin_list;
-	while (temp->next != NULL)
+	while (temp)
 	{
 		temp = temp->next;
 		i++;

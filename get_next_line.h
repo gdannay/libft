@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 11:07:02 by gdannay           #+#    #+#             */
-/*   Updated: 2017/12/15 16:00:08 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/14 19:30:42 by gdannay           #+#    #+#             */
+/*   Updated: 2018/01/07 12:32:20 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include "libft.h"
+# include <fcntl.h>
+# include <string.h>
+
+typedef struct		s_lst
 {
-	size_t	i;
-	char	*new;
+	int				fd;
+	char			*txt;
+	struct s_lst	*next;
+}					t_lst;
 
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	if ((new = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		new[i] = s[start + i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
-}
+int					get_next_line(const int fd, char **line);
+#endif

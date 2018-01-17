@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_chartostr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 11:07:02 by gdannay           #+#    #+#             */
-/*   Updated: 2017/12/15 16:00:08 by gdannay          ###   ########.fr       */
+/*   Created: 2017/12/06 11:04:37 by gdannay           #+#    #+#             */
+/*   Updated: 2017/12/06 11:06:14 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char		*chartostr(long long c)
 {
-	size_t	i;
-	char	*new;
+	char *new;
 
-	i = 0;
-	if (s == NULL)
+	if ((new = (char *)malloc(sizeof(char) * 2)) == NULL)
 		return (NULL);
-	if ((new = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		new[i] = s[start + i];
-		i++;
-	}
-	new[i] = '\0';
+	new[0] = (char)c;
+	new[1] = '\0';
 	return (new);
 }

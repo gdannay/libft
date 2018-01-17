@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_joinpath.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 10:22:51 by gdannay           #+#    #+#             */
-/*   Updated: 2017/12/02 11:46:17 by gdannay          ###   ########.fr       */
+/*   Created: 2018/01/07 11:56:27 by gdannay           #+#    #+#             */
+/*   Updated: 2018/01/07 16:15:46 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_joinwchar(char *dir, char *name, char c)
 {
-	size_t	size1;
-	size_t	size2;
-	char	*new;
-	size_t	i;
-	size_t	j;
+	char	*file_dir;
+	int		i;
+	int		j;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	if ((new = (char *)malloc(sizeof(char) * (size1 + size2 + 1))) == NULL)
-		return (0);
-	while (s1 && s1[i] != '\0')
+	if ((file_dir = (char *)malloc(sizeof(char) *
+					(ft_strlen(dir) + ft_strlen(name) + 2))) == NULL)
+		return (NULL);
+	while (dir && dir[++i] != '\0')
+		file_dir[i] = dir[i];
+	file_dir[i] = c;
+	i++;
+	while (name && name[j] != '\0')
 	{
-		new[i] = s1[i];
+		file_dir[i] = name[j];
 		i++;
+		j++;
 	}
-	while (s2 && s2[j] != '\0')
-		new[i++] = s2[j++];
-	new[i] = '\0';
-	return (new);
+	file_dir[i] = '\0';
+	return (file_dir);
 }

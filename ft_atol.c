@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 10:22:51 by gdannay           #+#    #+#             */
-/*   Updated: 2017/12/02 11:46:17 by gdannay          ###   ########.fr       */
+/*   Created: 2018/01/17 10:46:46 by gdannay           #+#    #+#             */
+/*   Updated: 2018/01/17 10:46:48 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+long	ft_atol(const char *nbr)
 {
-	size_t	size1;
-	size_t	size2;
-	char	*new;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		neg;
+	long	n;
 
 	i = 0;
-	j = 0;
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	if ((new = (char *)malloc(sizeof(char) * (size1 + size2 + 1))) == NULL)
-		return (0);
-	while (s1 && s1[i] != '\0')
+	neg = 0;
+	n = 0;
+	while ((nbr[i] >= 8 && nbr[i] <= 13) || nbr[i] == ' ')
+		i++;
+	if (nbr[i] == '-')
+		neg = 1;
+	if (nbr[i] == '-' || nbr[i] == '+')
+		i++;
+	while (nbr[i] != '\0' && nbr[i] >= '0' && nbr[i] <= '9')
 	{
-		new[i] = s1[i];
+		n = n * 10 - (nbr[i] - '0');
 		i++;
 	}
-	while (s2 && s2[j] != '\0')
-		new[i++] = s2[j++];
-	new[i] = '\0';
-	return (new);
+	if (neg == 1)
+		return (n);
+	return (-n);
 }

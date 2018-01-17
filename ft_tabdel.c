@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_tabdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 11:07:02 by gdannay           #+#    #+#             */
-/*   Updated: 2017/12/15 16:00:08 by gdannay          ###   ########.fr       */
+/*   Created: 2018/01/17 10:49:08 by gdannay           #+#    #+#             */
+/*   Updated: 2018/01/17 10:50:12 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void	ft_tabdel(char ***tab)
 {
-	size_t	i;
-	char	*new;
+	int i;
 
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	if ((new = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
-		return (NULL);
-	while (i < len)
+	i = -1;
+	if (tab && *tab)
 	{
-		new[i] = s[start + i];
-		i++;
+		while ((*tab)[++i])
+			ft_strdel(&(*tab)[i]);
+		free(*tab);
+		*tab = NULL;
 	}
-	new[i] = '\0';
-	return (new);
 }

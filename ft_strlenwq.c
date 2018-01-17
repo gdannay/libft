@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdannay <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 10:22:51 by gdannay           #+#    #+#             */
-/*   Updated: 2017/12/02 11:46:17 by gdannay          ###   ########.fr       */
+/*   Created: 2017/11/09 21:39:57 by gdannay           #+#    #+#             */
+/*   Updated: 2018/01/11 14:20:26 by gdannay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
-#include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t	ft_strlenwq(char *s, char quote)
 {
-	size_t	size1;
-	size_t	size2;
-	char	*new;
 	size_t	i;
-	size_t	j;
+	size_t	size;
 
 	i = 0;
-	j = 0;
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	if ((new = (char *)malloc(sizeof(char) * (size1 + size2 + 1))) == NULL)
+	size = 0;
+	if (s == NULL)
 		return (0);
-	while (s1 && s1[i] != '\0')
+	while (s[i] != '\0')
 	{
-		new[i] = s1[i];
+		if (s[i] != quote && (s[i] != '\\' || (s[i + 1] && s[i + 1] == '\\')))
+			size++;
 		i++;
 	}
-	while (s2 && s2[j] != '\0')
-		new[i++] = s2[j++];
-	new[i] = '\0';
-	return (new);
+	return (size);
 }
